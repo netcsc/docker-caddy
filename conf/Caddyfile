@@ -1,6 +1,6 @@
 :9090 {
     basicauth / #CADDY_ADMIN_USER# #CADDY_ADMIN_PASSWORD#
-    proxy / prometheus:9090 {
+    proxy / #PROMETHEUS#:9090 {
             transparent
         }
 
@@ -10,7 +10,7 @@
 
 :9093 {
     basicauth / #CADDY_ADMIN_USER# #CADDY_ADMIN_PASSWORD#
-    proxy / alertmanager:9093 {
+    proxy / #PROMETHEUS#:9093 {
             transparent
         }
 
@@ -20,18 +20,8 @@
 
 :9094 {
     basicauth / #CADDY_ADMIN_USER# #CADDY_ADMIN_PASSWORD#
-    proxy / unsee:8080 {
+    proxy / #PROMETHEUS#:8080 {
             transparent
-        }
-
-    errors stderr
-    tls off
-}
-
-:3000 {
-    proxy / grafana:3000 {
-            transparent
-            websocket
         }
 
     errors stderr

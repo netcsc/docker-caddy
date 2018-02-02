@@ -7,6 +7,4 @@ cat /etc/caddy/Caddyfile |\
 
 mv /tmp/Caddyfile /etc/caddy/Caddyfile
 
-set -- /sbin/tini -- "$@"
-
-exec "$@"
+caddy -agree --conf /etc/caddy/Caddyfile
